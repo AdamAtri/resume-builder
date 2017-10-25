@@ -3,3 +3,12 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.job {
+  display: flex;
+}
+
+.add-job {
+  background-color: blue;
+  border: 1px solid #ccc;
+}

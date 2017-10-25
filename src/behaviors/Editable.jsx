@@ -2,20 +2,21 @@
 
 import React, {Component} from 'react';
 
-// const Edit = ({onEdit=()=>{}, elType, value, ...props}) => (
-//   <div onClick={onEdit} {...props}>
-//   <span>edit: {value}</span>
-//   </div>
-// );
+// Creates an editable interface for Text based elements
+//  Note: `elType` is expecting [`hn`, `span`, or `a`]
+export default ({editing, elType, value, onEdit, ...props}) => {
+  if (editing) {
+    // return an editing interface
+    return <Edit value={value} onEdit={onEdit} elType={elType} {...props}/>;
+  }
+  // return an element with the given props and value
+  return React.createElement(elType, props, value);
+}
 
-// const Edit = ({onEdit=()=>{}, elType, value, ...props}) => (
-//   <div onClick={onEdit} {...props}>
-//     {React.createElement(elType, null, `editing: ${value}`)}
-//   </div>
-// );
-
+// The <Edit> class is an text input bound to the component implementing
+//  the <Editable> interface(?), and it will use the `onEdit` function to update
+//  the component's value.
 class Edit extends Component {
-
   render() {
     const {elType, value, onEdit, ...props} = this.props;
     return (
@@ -36,18 +37,6 @@ class Edit extends Component {
 
   finishEdit(e) {
     const value = e.target.value;
-    const {attr} = this.props;
-    if (this.props.onEdit) this.props.onEdit(attr, value);
+    if (this.props.onEdit) this.props.onEdit(value);
   }
-}
-
-// Creates an editable interface for Text based elements
-//  Note: `elType` is expecting [`hn`, `span`, or `a`]
-export default ({editing, elType, attr, value, onEdit, ...props}) => {
-  if (editing) {
-    // return an editing interface
-    return <Edit attr={attr} value={value} onEdit={onEdit} elType={elType} {...props}/>;
-  }
-  // return an element with the given props and value
-  return React.createElement(elType, props, value);
 }

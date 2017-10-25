@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Jobs from './components/JobList';
+import { JobList } from './components';
 
 import uuid from 'uuid';
 
@@ -80,8 +80,8 @@ class App extends Component {
     const {jobs} = this.state;
     return (
       <div className="App">
-        <button onClick={this.addJob}>+</button>
-        <Jobs
+        <button className="add-job" onClick={this.addJob}>+</button>
+        <JobList
           jobs={jobs}
           onJobClick={this.activateJobEditing}
           onEdit={this.editJob}
