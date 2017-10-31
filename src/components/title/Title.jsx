@@ -9,6 +9,7 @@ export default ({title, editing, onEdit, onTitleClick, ...props}) => {
       value={title}
       onEdit={onEdit}
       onClick={onTitleClick}
+      className='main-title'
       {...props} />
   )
 }
