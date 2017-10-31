@@ -7,6 +7,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: [{
+        id: uuid.v4(),
+        name:'Your Name',
+        editing: false
+      }],
+      objective: [{
+        id: uuid.v4(),
+        text: 'Lorem ipsum dolorat qui ibsem',
+        editing: false
+      }],
       jobs: [
         {
           id: uuid.v4(),
@@ -27,10 +37,42 @@ class App extends Component {
       ]
     };
 
+    this.editUser =
+      this.edit.bind(this, 'user', this.state.user.id, 'name');
+    this.activateUser =
+      this.activate.bind(this, 'user', this.state.user.id);
+    this.editObjective =
+      this.edit.bind(this, 'objective', this.state.objective.id, 'text');
+    this.activateObjective =
+      this.activate.bind(this, 'objective', this.state.objective.id);
+
     this.addJob = this.addJob.bind(this);
-    this.editJob = this.editJob.bind(this);
+    this.editJob = this.edit.bind(this, 'jobs');
     this.deleteJob = this.deleteJob.bind(this);
-    this.activateJobEditing = this.activateJobEditing.bind(this);
+    this.activateJobEditing = this.activate.bind(this, 'jobs');
+  }
+
+  edit(table, id, attr, value) {
+    console.log('using edit function');
+    this.setState({
+      [table]: this.state[table].map(obj => {
+        if (obj.id === id) {
+          obj.editing = false;
+          obj[attr] = value;
+        }
+        return obj;
+      })
+    });
+  }
+
+  activate(table, id) {
+    console.log('using activate function');
+    this.setState({
+      [table]: this.state[table].map( obj => {
+        obj.editing = obj.id === id;
+        return obj;
+      })
+    });
   }
 
   addJob() {
@@ -59,18 +101,6 @@ class App extends Component {
     this.setState({
       jobs: this.state.jobs.map( job => {
         job.editing = job.id === jobId;
-        return job;
-      })
-    });
-  }
-
-  editJob(jobId, attr, value) {
-    this.setState({
-      jobs: this.state.jobs.map( job => {
-        if (job.id === jobId) {
-          job.editing = false;
-          job[attr] = value;
-        }
         return job;
       })
     });

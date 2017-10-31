@@ -1,7 +1,11 @@
+* {
+  font-size: 16px;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 67.5%
 }
 
 .job {
@@ -11,4 +15,11 @@ body {
 .add-job {
   background-color: blue;
   border: 1px solid #ccc;
+}
+
+.job-title {
+  font-family: monospace;
+  font-size: 1.5em;
+  margin-top: 10px;
+  height: 23px;
 }

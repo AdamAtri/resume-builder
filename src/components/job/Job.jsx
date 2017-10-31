@@ -7,12 +7,12 @@ export default ({job, onJobClick, onEdit, onDelete, ...props}) => {
   const {id, editing, employer, location} = job;
   return (
     <div onClick={onJobClick.bind(null, id)} className="job-item" {...props} >
-
       <Editable
         editing={editing}
-        elType='h1'
+        elType='h2'
         value={employer}
-        onEdit={onEdit.bind(null, id, 'employer')} />
+        onEdit={onEdit.bind(null, id, 'employer')}
+        className='job-title' />
       <p>{location.city}, {location.state}</p>
       <button onClick={onDelete.bind(null, id)}>X</button>
     </div>

@@ -13,7 +13,7 @@ export default ({editing, elType, value, onEdit, ...props}) => {
   return React.createElement(elType, props, value);
 }
 
-// The <Edit> class is an text input bound to the component implementing
+// The <Edit> class is a text input bound to the component implementing
 //  the <Editable> interface(?), and it will use the `onEdit` function to update
 //  the component's value.
 class Edit extends Component {
