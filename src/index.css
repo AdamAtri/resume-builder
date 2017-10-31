@@ -17,6 +17,17 @@ body {
   border: 1px solid #ccc;
 }
 
+.main-title {
+  margin-top: .5em;
+  margin-bottom: 2px;
+  font-size: 3em;
+}
+.objective-text {
+  margin-top: 0;
+  width: 100%;
+  height: auto;
+}
+
 .job-title {
   font-family: monospace;
   font-size: 1.5em;

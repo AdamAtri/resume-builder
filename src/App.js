@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { JobList } from './components';
+import { JobList, TitleRegion } from './components';
 
 import uuid from 'uuid';
 
@@ -37,14 +37,15 @@ class App extends Component {
       ]
     };
 
+    const { user, objective } = this.state;
     this.editUser =
-      this.edit.bind(this, 'user', this.state.user.id, 'name');
+      this.edit.bind(this, 'user', user[0].id, 'name');
     this.activateUser =
-      this.activate.bind(this, 'user', this.state.user.id);
+      this.activate.bind(this, 'user', user[0].id);
     this.editObjective =
-      this.edit.bind(this, 'objective', this.state.objective.id, 'text');
+      this.edit.bind(this, 'objective', objective[0].id, 'text');
     this.activateObjective =
-      this.activate.bind(this, 'objective', this.state.objective.id);
+      this.activate.bind(this, 'objective', objective[0].id);
 
     this.addJob = this.addJob.bind(this);
     this.editJob = this.edit.bind(this, 'jobs');
@@ -97,19 +98,18 @@ class App extends Component {
     });
   }
 
-  activateJobEditing(jobId) {
-    this.setState({
-      jobs: this.state.jobs.map( job => {
-        job.editing = job.id === jobId;
-        return job;
-      })
-    });
-  }
-
   render() {
-    const {jobs} = this.state;
+    const {jobs, user, objective} = this.state;
     return (
       <div className="App">
+        <TitleRegion
+          user={user[0]}
+          onUserEdit={this.editUser}
+          onUserActivate={this.activateUser}
+          objective={objective[0]}
+          onObjectiveEdit={this.editObjective}
+          onObjectiveActivate={this.activateObjective} />
+
         <button className="add-job" onClick={this.addJob}>+</button>
         <JobList
           jobs={jobs}
