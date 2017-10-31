@@ -10,7 +10,10 @@ class App extends Component {
       user: [{
         id: uuid.v4(),
         name:'Your Name',
-        editing: false
+        email: 'your.email@domain.tld',
+        phone: '(999) 999-9999',
+        editing: false,
+        editingValue: null
       }],
       objective: [{
         id: uuid.v4(),
@@ -24,7 +27,8 @@ class App extends Component {
           location: {city:'Durham', state:'NC'},
           start: '15-OCT-2014',
           end: 'present',
-          editing: false
+          editing: false,
+          editingValue: null
         },
         {
           id: uuid.v4(),
@@ -32,14 +36,15 @@ class App extends Component {
           location: {city:'Garner', state:'NC'},
           start: '2-JAN-2013',
           end: '1-JUN-2014',
-          editing: false
+          editing: false,
+          editingValue: null
         }
       ]
     };
 
     const { user, objective } = this.state;
     this.editUser =
-      this.edit.bind(this, 'user', user[0].id, 'name');
+      this.edit.bind(this, 'user', user[0].id);
     this.activateUser =
       this.activate.bind(this, 'user', user[0].id);
     this.editObjective =
@@ -66,11 +71,12 @@ class App extends Component {
     });
   }
 
-  activate(table, id) {
+  activate(table, id, attr) {
     console.log('using activate function');
     this.setState({
       [table]: this.state[table].map( obj => {
         obj.editing = obj.id === id;
+        if (obj.editing && attr) obj.editingValue = attr;
         return obj;
       })
     });
