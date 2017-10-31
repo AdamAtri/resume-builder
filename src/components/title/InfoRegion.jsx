@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Editable from '../../behaviors/Editable';
 
 const isLink = (value) => {
@@ -18,15 +18,19 @@ const isMail = (value) => {
 export default ({details, srcObj, onEdit, onActivate, ...props}) => {
   return (
     <div>
-      {details.map((detail) =>
-        <Editable
-          editing={srcObj.editing && srcObj.editingValue === detail}
-          elType={isLink(srcObj[detail]) ? 'a' : 'h6'}
-          value={srcObj[detail]}
-          onEdit={onEdit.bind(null, detail)}
-          onClick={onActivate.bind(null, detail)}
-          {...props} />
-      )}
+      <ul>
+        {details.map((detail) =>
+          <li key={`${srcObj.id}_${detail}`}>
+            <Editable
+              editing={srcObj.editing && srcObj.editingValue === detail}
+              elType={isLink(srcObj[detail]) ? 'a' : 'span'}
+              value={srcObj[detail]}
+              onEdit={onEdit.bind(null, detail)}
+              onClick={onActivate.bind(null, detail)}
+              {...props} />
+          </li>
+        )}
+      </ul>
     </div>
   )
 }

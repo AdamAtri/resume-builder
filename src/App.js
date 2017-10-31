@@ -64,6 +64,7 @@ class App extends Component {
       [table]: this.state[table].map(obj => {
         if (obj.id === id) {
           obj.editing = false;
+          if (obj.editingValue) obj.editingValue = null;
           obj[attr] = value;
         }
         return obj;
