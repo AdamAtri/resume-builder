@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { JobList, TitleRegion } from './components';
-
 import uuid from 'uuid';
+
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -59,7 +60,6 @@ class App extends Component {
   }
 
   edit(table, id, attr, value) {
-    console.log('using edit function');
     this.setState({
       [table]: this.state[table].map(obj => {
         if (obj.id === id) {
@@ -73,7 +73,6 @@ class App extends Component {
   }
 
   activate(table, id, attr) {
-    console.log('using activate function');
     this.setState({
       [table]: this.state[table].map( obj => {
         obj.editing = obj.id === id;
@@ -93,7 +92,8 @@ class App extends Component {
         responsibilities:'Unknown',
         start: 'Unknown',
         end: 'Unkown',
-        editing: false
+        editing: false,
+        editingValue: null;
       }])
     });
   }
