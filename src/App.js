@@ -93,7 +93,7 @@ class App extends Component {
         start: 'Unknown',
         end: 'Unkown',
         editing: false,
-        editingValue: null;
+        editingValue: null
       }])
     });
   }

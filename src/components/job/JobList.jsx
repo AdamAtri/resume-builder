@@ -1,5 +1,6 @@
 import React from 'react';
 import Job from './Job';
+import './Job.css';
 
 // A list view for displaying places of employment.
 

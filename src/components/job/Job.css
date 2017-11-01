@@ -1,0 +1,10 @@
+.job {
+  display: flex;
+}
+
+.job-title {
+  font-family: monospace;
+  font-size: 1.5em;
+  margin-top: 10px;
+  height: 23px;
+}

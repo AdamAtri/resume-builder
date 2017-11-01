@@ -11,30 +11,14 @@ body {
 
 ul {
   list-style: none;
+  padding: 0;
 }
 li {
   margin: 2px 0;
   line-height: 75%;
 }
 
-.job {
-  display: flex;
-}
-
 .add-job {
   background-color: blue;
   border: 1px solid #ccc;
-}
-
-.objective-text {
-  margin-top: 0;
-  width: 100%;
-  height: auto;
-}
-
-.job-title {
-  font-family: monospace;
-  font-size: 1.5em;
-  margin-top: 10px;
-  height: 23px;
 }
