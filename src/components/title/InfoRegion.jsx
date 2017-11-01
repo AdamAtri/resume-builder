@@ -13,7 +13,7 @@ const isMail = (value) => {
 }
 export default ({details, srcObj, onEdit, onActivate, ...props}) => {
   return (
-    <div>
+    <div className='main-info'>
       <ul>
         {details.map((detail) => {
           const href =
@@ -28,6 +28,7 @@ export default ({details, srcObj, onEdit, onActivate, ...props}) => {
                 value={srcObj[detail]}
                 onEdit={onEdit.bind(null, detail)}
                 onClick={onActivate.bind(null, detail)}
+                className='main-info-item'
                 {...props} />
             </li>
           )}

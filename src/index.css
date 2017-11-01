@@ -1,11 +1,19 @@
 * {
   font-size: 16px;
+  margin: .1em;
 }
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   font-size: 67.5%
+}
+
+ul {
+  list-style: none;
+}
+li {
+  margin: 2px 0;
 }
 
 .job {
@@ -17,11 +25,6 @@ body {
   border: 1px solid #ccc;
 }
 
-.main-title {
-  margin-top: .5em;
-  margin-bottom: 2px;
-  font-size: 3em;
-}
 .objective-text {
   margin-top: 0;
   width: 100%;
