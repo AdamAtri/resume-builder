@@ -1,6 +1,12 @@
 .App {
   width: 80%;
-  margin: auto;
+  max-width: 700px;
+  height: 90vh;
+  margin: 5vh auto;
+  border: 2px solid darkgray;
+  background-color: white;
+  z-index: 2;
+  box-shadow: 5px 5px 25px #222;
 }
 
 /*.App-logo {

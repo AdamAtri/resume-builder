@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 export default ({editing, elType, value, onEdit, ...props}) => {
   if (editing) {
     // return an editing interface
-    return <Edit value={value} onEdit={onEdit} elType={elType} {...props}/>;
+    return <Edit value={value} onEdit={onEdit} {...props}/>;
   }
   // return an element with the given props and value
   return React.createElement(elType, props, value);
@@ -18,8 +18,8 @@ export default ({editing, elType, value, onEdit, ...props}) => {
 //  the component's value.
 class Edit extends Component {
   render() {
-    const {elType, value, onEdit, ...props} = this.props;
-    return (
+    const {value, onEdit, ...props} = this.props;
+    this.input = (
       <input
         type="text"
         autoFocus={true}
@@ -29,6 +29,7 @@ class Edit extends Component {
         {...props}
       />
     );
+    return this.input;
   }
 
   checkEnter(e) {
